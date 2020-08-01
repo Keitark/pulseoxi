@@ -45,13 +45,13 @@ void loop() {
     startSense();
   }
   if (M5.BtnA.wasReleased()) {
-    if(!doStart) {
-      particleSensor.begin(Wire, I2C_SPEED_FAST);
-      doStart = true;
-    } else{
-      particleSensor.shutDown();
-      doStart = false;
-    }
+    particleSensor.begin(Wire, I2C_SPEED_FAST);
+
+    M5.Lcd.fillScreen(TFT_BLACK);
+    M5.Lcd.setCursor(0,20);
+    M5.Lcd.println("Touch,\n then wait.");
+
+    doStart = true;
   } 
 }
 
@@ -133,15 +133,12 @@ void printToDisplay()
   M5.Lcd.fillScreen(TFT_BLACK);
   M5.Lcd.setTextColor(WHITE);
   M5.Lcd.setTextSize(2);
-  //M5.Lcd.setCursor(0,0);
- //
   M5.Lcd.setCursor(0,20);
+
   if(validSPO2 && validHeartRate) {
-  //  M5.Lcd.drawXBitmap(0, 5, hb2_bmp, 64, 32, TFT_RED);
     M5.Lcd.print("HR: "); M5.Lcd.println(heartRate, DEC);
     M5.Lcd.print("SPO2: "); M5.Lcd.println(spo2, DEC);
   } else {
-   // M5.Lcd.drawXBitmap(0, 5, hb1_bmp, 64, 32, TFT_WHITE);
     M5.Lcd.print("Not valid");
   }
 }
