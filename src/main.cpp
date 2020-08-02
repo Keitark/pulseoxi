@@ -106,7 +106,7 @@ void startSense()
       particleSensor.nextSample(); //We're finished with this sample so move to next sample
 
       //send samples and calculation result to terminal program through UART
-/*
+/* 
       Serial.print("red="); Serial.print(redBuffer[i], DEC);
       Serial.print(", ir=");  Serial.print(irBuffer[i], DEC);
 
@@ -115,6 +115,7 @@ void startSense()
       Serial.print(", SPO2="); Serial.print(spo2, DEC);
       Serial.print(", SPO2Valid="); Serial.println(validSPO2, DEC);
 */  
+ // For serial plotter
  //     Serial.println((float)irBuffer[i]/redBuffer[i], 4);
       Serial.println(redBuffer[i], DEC);
  //     Serial.print(",");  Serial.println(irBuffer[i], DEC);
